@@ -32,18 +32,37 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                Text("R" , style: GoogleFonts.kronaOne(textStyle : TextStyle(color: Color(0xFFFF5475))),),
-                Text("omad.Ai", style: GoogleFonts.kronaOne(textStyle : TextStyle(fontSize:  15.0)),),
+                Row(
+                  children: [
+                    Text(
+                      "R",
+                      style: GoogleFonts.kronaOne(
+                          textStyle: TextStyle(color: Color(0xFFFF5475))),
+                    ),
+                    Text(
+                      "omad.Ai",
+                      style: GoogleFonts.kronaOne(
+                          textStyle: TextStyle(fontSize: 15.0)),
+                    ),
+                  ],
+                ),
+                Spacer(),
+                CircleAvatar(
+                  backgroundImage:
+                      AssetImage('images/user_image.png'), // User profile image
+                  //  Image.asset('images/onboarding03.png')
+                )
               ],
             ),
-            Spacer(),
-            CircleAvatar(
-              backgroundImage:
-                  AssetImage('assets/user_image.png'), // User profile image
+            Text(
+              "roam nomadically",
+              style: GoogleFonts.kronaOne(textStyle: TextStyle(fontSize: 10.0)),
             )
           ],
         ),
@@ -85,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
               // "What are you dreaming of?" Text
               Text(
                 "What are you dreaming of? Let’s plan it with",
-                style: GoogleFonts.kronaOne(textStyle : TextStyle(fontSize: 18)),
+                style: GoogleFonts.kronaOne(textStyle: TextStyle(fontSize: 18)),
               ),
               SizedBox(height: 20),
 
@@ -93,25 +112,54 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 children: [
                   Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        labelText: 'From',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        labelText: 'To',
-                        border: OutlineInputBorder(),
+                    child: SizedBox(
+                      // height: 80, // Adjusting the height of the input field
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white, // Set background color to white
+                          borderRadius: BorderRadius.circular(50.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey
+                                  .withOpacity(0.2), // Light shadow color
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0,
+                                  3), // Horizontal and vertical offset of the shadow
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Where ?", style: GoogleFonts.kronaOne()),
+                            TextField(
+                              decoration: InputDecoration(
+                                // labelText: 'Where?', // Label text
+                                // labelStyle: GoogleFonts.kronaOne(),
+                                hintText:
+                                    'Bali * Paris * Miami', // Placeholder text (city name)
+                                hintStyle: GoogleFonts.roboto(
+                                  color: Colors.blueGrey,
+
+                                  // Style for the placeholder city name
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  borderSide: BorderSide
+                                      .none, // Remove border to blend with background
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // Select date row with date picker
               GestureDetector(
@@ -122,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       labelText: _selectedDate == null
                           ? 'Select Date'
                           : "DateFormat.yMMMd().format(_selectedDate!)",
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                     ),
                   ),
                 ),
@@ -130,7 +178,9 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 20),
 
               // Travel type selection (adventure, chill, business, other)
-              Text("Type", style: GoogleFonts.kronaOne(textStyle : TextStyle(fontSize: 14))),
+              Text("Type",
+                  style:
+                      GoogleFonts.kronaOne(textStyle: TextStyle(fontSize: 14))),
               SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -144,7 +194,9 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 20),
 
               // Budget selection
-              Text("Budget" , style: GoogleFonts.kronaOne(textStyle : TextStyle(fontSize: 14))),
+              Text("Budget",
+                  style:
+                      GoogleFonts.kronaOne(textStyle: TextStyle(fontSize: 14))),
               SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -157,7 +209,9 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 20),
 
               // Plan with (family, friends, solo)
-              Text("With" , style: GoogleFonts.kronaOne(textStyle : TextStyle(fontSize: 14))),
+              Text("With",
+                  style:
+                      GoogleFonts.kronaOne(textStyle: TextStyle(fontSize: 14))),
               SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -176,7 +230,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () {
                     // Add action on button press
                   },
-                  child: Text("Plan" , style: GoogleFonts.kronaOne(textStyle : TextStyle(fontSize: 18 , color: Colors.white))),
+                  child: Text("Plan",
+                      style: GoogleFonts.kronaOne(
+                          textStyle:
+                              TextStyle(fontSize: 18, color: Colors.white))),
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 16),
                     backgroundColor: Color(0xFFFF5475), // Button color
