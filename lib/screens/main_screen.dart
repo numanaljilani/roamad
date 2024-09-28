@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:roamad/screens/flicks_screen.dart';
 import 'package:roamad/screens/tribes_screen.dart';
 import 'package:roamad/screens/trips_screen.dart';
 import '../constants/app_texts.dart';
@@ -21,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
     MenuItem(title: "My Trip", icon: "assets/icons/Graph.png")
   ];
   int selectedIndex=0;
-  List<Widget>screens=[HomeScreen1(),TripsScreen(),SizedBox(),TribesScreen(),SizedBox()];
+  List<Widget>screens=[HomeScreen1(),TripsScreen(),FlicksScreen(),TribesScreen(),SizedBox()];
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +70,12 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-        onPressed: () {},
-        child: Image.asset("assets/icons/F.png"),
+        onPressed: () {
+          setState(() {
+            selectedIndex=2;
+          });
+        },
+        child:selectedIndex==2?const Icon(Icons.add,color: Colors.white,size: 35,): Image.asset("assets/icons/F.png"),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
