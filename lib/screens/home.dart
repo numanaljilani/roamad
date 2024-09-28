@@ -286,6 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildChoiceChip(String label, String? selectedValue) {
     return ChoiceChip(
+      elevation: 30,
       label: Text(label),
       selected: _selectedTravelType == label,
       onSelected: (bool selected) {

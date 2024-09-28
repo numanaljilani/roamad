@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:roamad/screens/home.dart';
+import 'package:roamad/screens/login.dart';
+import 'package:roamad/screens/main_screen.dart';
 import 'package:roamad/screens/onboarding.dart';
+import 'package:roamad/screens/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,11 +18,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'KroneOne',
+        primaryColor:const  Color(0xffFF5475),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: HomeScreen(),
+      home: const MainScreen(),
     );
   }
 }
